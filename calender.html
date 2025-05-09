@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FullCalendar with Stored Tasks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FullCalendar Stylesheets -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="h-screen bg-sky-50 flex items-center justify-center">
+      <div id="calendar" class="p-2 h-full w-full"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarEl = document.getElementById("calendar");
+
+        const tasks = JSON.parse(localStorage.getItem('taskDetails')) || [];
+  
+
+        const events = tasks.map((task) => ({
+          title: task.task,  // Task name
+          start: task.cleandate,  // Task date (start)
+          description: task.priority,  // Priority (as description)
+        }));
+        console.log(events); 
+        
+
+        // Initialize the FullCalendar instance
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",  // Default calendar view
+          events: events,  // Add parsed events to FullCalendar
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay", // TimeGrid views
+          },
+        });
+
+        // Render the calendar
+        calendar.render();
+      });
+    </script>
+  </body>
+</html>
+
+
+

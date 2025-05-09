@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do-It</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&family=Raleway:wght@400;500&family=Sora:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'sora': ['Sora', 'sans-serif'],
+            'playfair': ['Playfair Display', 'serif'],
+            'raleway': ['Raleway', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="h-screen">
+  <div class="flex h-full">
+
+    <nav class="hidden bg-white p-6 flex-col justify-between shadow-2xl md:block">
+      <div class="text-2xl font-bold text-gray-800 mb-10">Do-It</div>
+      <ul class="space-y-6">
+        <li><a href="#" class="text-gray-700 hover:text-blue-600">Home</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-600">About</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-600">Services</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-600">Contact</a></li>
+      </ul>
+    </nav>
+
+
+    <main class="bg-sky-50 flex-1 h-full overflow-y-scroll">
+      <section class="p-6 bg-sky-50 text-gray-500 flex flex-col items-start justify-start">
+        <div>
+          <h1 class="text-4xl font-raleway font-semibold my-6">Welcome to <span class="italic font-light">Do-It</span>
+          </h1>
+          <p class="text-md font-inter">
+            Add your task and see it get arranged automatically in the calendar for
+            better tracking of your works by three simple steps
+          </p>
+          <a id="stepbutton" class="cursor-pointer my-4 text-sm font-inter text-blue-500">Click to expand the
+            steps</a>
+        </div>
+
+        <div id="steps" class="w-full my-6 hidden">
+          <table class="w-full backdrop-blur-2xl bg-white/7 shadow-2xl rounded-xl">
+            <tbody>
+              <tr class="border-b hover:bg-gray-100">
+                <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Step 1</td>
+                <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">Add your task with date and time</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Step 2</td>
+                <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">Define priority in the listing</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Step 3</td>
+                <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">Hit add button</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="p-6 text-gray-500 font-inter">
+        <h1 class="text-2xl font-raleway font-semibold">List your task here</h1>
+        <form action="" class="flex flex-col gap-4 mt-6">
+          <div class="flex flex-col gap-2">
+            <label for="task">Task Details</label>
+            <textarea id="task" required
+              class="h-32 border border-gray-300 p-4 rounded-lg w-full placeholder:text-sm placeholder:text-gray-500"
+              placeholder="Define the task here with date, time, and priority"></textarea>
+          </div>
+          <button type="submit" class="inline-block bg-blue-600 text-white px-4 py-2 mt-4 rounded-lg">Add task</button>
+        </form>
+        <a href="calender.html"
+          class="inline-block w-full bg-blue-600 text-white px-4 py-2 mt-4 rounded-lg text-center">See your
+          tasks in calendar
+        </a>
+      </section>
+      <section id="tasks" class="mt-10 p-6">
+        <h2 class="text-2xl font-raleway font-semibold my-4 text-gray-500">Your Tasks</h2>
+        <ul id="tasklist" class="space-y-2"></ul>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
